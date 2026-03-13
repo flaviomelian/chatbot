@@ -44,21 +44,25 @@ export default function AzureChatApp() {
       temperature: temp,
       history: messages.slice(-10) as Message[],
     }).then((response) => {
-        if (response.status === "success") 
-          setMessages((prev) => [...prev, { role: response.role, content: response.content }]);
-      }).finally(() => setIsLoading(false));
+      if (response.status === "success")
+        setMessages((prev) => [...prev, { role: response.role, content: response.content }]);
+    }).finally(() => setIsLoading(false));
   };
 
   return (
     <div className="flex flex-col md:flex-row h-screen w-full bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 overflow-hidden font-sans">
       {/* --- SIDEBAR --- */}
       <aside className="hidden md:flex w-80 flex-col border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0c0e] p-6">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="bg-blue-600 p-2 rounded-lg"><Cpu size={20} className="text-white" /></div>
-          <h2 className="text-sm font-bold tracking-tighter uppercase">Azure AI Foundry</h2>
+        <div className="flex items-center gap-3 mb-8 group">
+          <div className="bg-blue-600 p-2 rounded-lg transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.8)] group-hover:scale-110">
+            <Cpu size={20} className="text-white transition-transform duration-300 group-hover:rotate-12" />
+          </div>
+          <h2 className="text-sm font-bold tracking-tighter uppercase bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:via-white group-hover:to-blue-400 transition-all duration-300">
+            Azure AI Foundry
+          </h2>
         </div>
         <div className="space-y-6 flex-1 overflow-y-auto scrollbar-thin scrollbar-track-transparent dark:scrollbar-thumb-zinc-800">
-           <div>
+          <div>
             <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-2 block italic">System Prompt</label>
             <textarea
               className="w-full h-40 p-3 text-xs font-mono bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl outline-none resize-none"
@@ -80,10 +84,10 @@ export default function AzureChatApp() {
 
       {/* --- MAIN CHAT AREA --- */}
       <main className="flex-1 flex flex-col h-full bg-white dark:bg-[#09090b] relative overflow-hidden">
-        
+
         {/* Messages Display: Scrollbar personalizada para que el fondo sea transparente */}
         <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 chat-scrollbar">
-          
+
           {messages.length === 0 && (
             <div className="h-full flex flex-col items-center justify-center text-center opacity-20">
               <Database size={40} className="mb-4" />
@@ -96,9 +100,8 @@ export default function AzureChatApp() {
               <span className="text-[9px] font-black uppercase mb-1 tracking-widest text-zinc-500">
                 {msg.role === "user" ? ">>> User" : "<<< Azure"}
               </span>
-              <div className={`max-w-[92%] md:max-w-[80%] p-4 rounded-2xl text-[13px] md:text-sm leading-relaxed ${
-                  msg.role === "user" ? "bg-blue-600 text-white shadow-lg shadow-blue-500/10" : "bg-zinc-100 dark:bg-[#18181b] border border-zinc-200 dark:border-zinc-800"
-              }`}>
+              <div className={`max-w-[92%] md:max-w-[80%] p-4 rounded-2xl text-[13px] md:text-sm leading-relaxed ${msg.role === "user" ? "bg-blue-600 text-white shadow-lg shadow-blue-500/10" : "bg-zinc-100 dark:bg-[#18181b] border border-zinc-200 dark:border-zinc-800"
+                }`}>
                 {msg.content}
               </div>
             </div>
@@ -111,7 +114,7 @@ export default function AzureChatApp() {
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
             </div>
           )}
-          <div ref={chatEndRef} className="h-32" /> 
+          <div ref={chatEndRef} className="h-32" />
         </div>
 
         {/* --- INPUT FRAME CON GRADIENTE DIFUMINADO MEJORADO --- */}
@@ -120,7 +123,7 @@ export default function AzureChatApp() {
           from-white via-white/90 to-transparent 
           dark:from-[#09090b] dark:via-[#09090b]/90 dark:to-transparent 
           pt-24 pointer-events-none">
-          
+
           <div className="max-w-4xl mx-auto pointer-events-auto">
             <div className="relative flex items-end gap-2 bg-white/70 dark:bg-[#09090b]/70 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 p-2 rounded-[24px] focus-within:ring-2 focus-within:ring-blue-500/20 transition-all shadow-2xl">
               <textarea
@@ -139,9 +142,8 @@ export default function AzureChatApp() {
               <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !input.trim()}
-                className={`h-10 w-10 flex items-center justify-center rounded-full transition-all ${
-                  isLoading || !input.trim() ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-400" : "bg-blue-600 text-white shadow-lg active:scale-95"
-                }`}
+                className={`h-10 w-10 flex items-center justify-center rounded-full transition-all ${isLoading || !input.trim() ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-400" : "bg-blue-600 text-white shadow-lg active:scale-95"
+                  }`}
               >
                 <Send size={18} />
               </button>
