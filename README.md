@@ -1,5 +1,7 @@
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/a72f696d-13b4-471d-bfb3-4bd8516d5558" />
+
 # AI Chatbot Ecosystem (Next.js + Spring Boot + FastAPI + Azure OpenAI)
+
 Este proyecto es un ecosistema de chatbot de nivel empresarial que utiliza una arquitectura desacoplada para separar la interfaz de usuario, la lógica de negocio y la orquestación de inteligencia artificial.
 
 ## 🏗️ Arquitectura del Sistema
