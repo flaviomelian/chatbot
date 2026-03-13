@@ -52,7 +52,7 @@ public class ChatService {
             try {
                 System.out.println("🚀 [ChatService] Levantando FastAPI en segundo plano...");
                 ProcessBuilder pb = new ProcessBuilder(
-                        pythonVenvExe, "-m", "uvicorn", "main:app", "--port", "5000");
+                        pythonVenvExe, "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000");
                 pb.directory(new java.io.File("backend-python"));
                 pb.redirectErrorStream(true);
                 pythonProcess = pb.start();
@@ -74,8 +74,7 @@ public class ChatService {
         }
     }
 
-    public String askPython(String userMessageText, String systemPrompt, Double temperature,
-            List<Map<String, String>> history) {
+    public String askPython(String userMessageText, String systemPrompt, Double temperature, List<Map<String, String>> history) {
 
         // 1. Lógica de conversación (ID 1) - SE QUEDA IGUAL
         ChatConversation conversation = chatRepository.findById(1L)

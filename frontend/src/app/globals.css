@@ -24,3 +24,46 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+/* Track completamente invisible, thumb con color */
+.chat-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent; /* thumb track — light mode */
+}
+
+.dark .chat-scrollbar {
+  scrollbar-color: #3f3f46 transparent; /* thumb track — dark mode */
+}
+
+/* Webkit (Chrome, Safari, Edge) */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  background: transparent !important;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d4d4d8; /* zinc-300 */
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box; /* ← clave para el gap visual */
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3f3f46; /* zinc-700 */
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #a1a1aa; /* zinc-400 */
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #52525b; /* zinc-600 */
+}

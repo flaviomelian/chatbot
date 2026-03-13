@@ -28,6 +28,7 @@ export const sendChatMessage = async (
 ): Promise<ChatResponse> => {
   try {
     if (!API_BASE_URL) {
+      console.error("API_BASE_URL no está configurada. Revisa tu archivo .env");
       throw new Error(
         "La URL de la API no está configurada. Revisa tu archivo .env",
       );

@@ -1,0 +1,14 @@
+[00:00:00.876] Server  LOG     
+[00:00:00.876] Server  LOG       We detected TypeScript in your project and created a tsconfig.json file for you.
+[00:00:00.997] Server  LOG     ✓ Ready in 713ms
+[00:01:46.692] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:47.245] Browser ERROR   Error historial: {}
+[00:01:55.690] Browser ERROR   ChatService Error: {}
+[00:02:53.460] Browser ERROR   ChatService Error: {}
+[00:02:56.685] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:56.836] Browser ERROR   Error historial: {}
+[00:03:31.017] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:31.165] Browser ERROR   Error historial: {}
+[00:03:48.699] Browser ERROR   ChatService Error: {}
+[00:07:46.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:46.709] Browser ERROR   Error historial: {}
