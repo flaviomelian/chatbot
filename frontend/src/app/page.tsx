@@ -29,7 +29,7 @@ export default function Home() {
                         <Cpu size={20} className="text-white transition-transform duration-300 group-hover:rotate-12" />
                     </div>
                     <h2 className="text-sm font-bold tracking-tighter uppercase bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:via-white group-hover:to-blue-400 transition-all duration-300">
-                        Azure AI Foundry
+                        Azure AI GPT-4o
                     </h2>
                 </div>
                 <div className="flex gap-6 items-center">

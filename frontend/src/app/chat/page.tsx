@@ -60,7 +60,7 @@ export default function AzureChatApp() {
             <Cpu size={20} className="text-white transition-transform duration-300 group-hover:rotate-12" />
           </div>
           <h2 className="text-sm font-bold tracking-tighter uppercase bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:via-white group-hover:to-blue-400 transition-all duration-300">
-            Azure AI Foundry
+            Azure AI GPT-4o
           </h2>
         </div>
         <div className="space-y-6 flex-1 overflow-y-auto scrollbar-thin scrollbar-track-transparent dark:scrollbar-thumb-zinc-800">
@@ -112,7 +112,30 @@ export default function AzureChatApp() {
               </span>
               <div className={`max-w-[92%] md:max-w-[80%] p-4 rounded-2xl text-[13px] md:text-sm leading-relaxed ${msg.role === "user" ? "bg-blue-600 text-white shadow-lg shadow-blue-500/10" : "bg-zinc-100 dark:bg-[#18181b] border border-zinc-200 dark:border-zinc-800"
                 }`}>
-                {msg.content}
+                {msg.content.split('\n').map((line, lineIdx) => (
+                  <p key={lineIdx} className={lineIdx > 0 ? "mt-2" : ""}>
+                    {line.split(/(\*\*.*?\*\*|:)/g).map((part, partIdx) => {
+                      // Caso 1: Es texto entre dobles asteriscos **texto**
+                      if (part.startsWith('**') && part.endsWith('**')) {
+                        return (
+                          <strong key={partIdx} className="font-bold text-blue-500 dark:text-blue-400">
+                            {part.replace(/\*\*/g, '')}
+                          </strong>
+                        );
+                      }
+                      // Caso 2: Es el carácter de dos puntos ":"
+                      if (part === ':') {
+                        return (
+                          <React.Fragment key={partIdx}>
+                            :<br />
+                          </React.Fragment>
+                        );
+                      }
+                      // Caso 3: Texto normal
+                      return part;
+                    })}
+                  </p>
+                ))}
               </div>
             </div>
           ))}
