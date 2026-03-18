@@ -15,7 +15,6 @@ public class BackendApplication {
         // 2. Inyectar las variables en el sistema de Spring
         dotenv.entries().forEach(entry -> {
             System.setProperty(entry.getKey(), entry.getValue());
-			System.out.println("Cargando: " + entry.getKey() + " = " + entry.getValue());
         });
 
         // 3. Arrancar la aplicación
